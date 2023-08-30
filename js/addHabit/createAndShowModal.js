@@ -1,11 +1,15 @@
 import addHabitElement from "./addHabitElement.js";
+import getHabitName from "./getHabitName.js";
+import saveHabit from "./saveHabit.js";
 
 export default function createAndShowModal() {
   let addModalElement = document.createElement("form");
   addModalElement.classList.add("add-modal");
   addModalElement.addEventListener("submit", (e) => {
     e.preventDefault();
-    addHabitElement();
+    const habitName = getHabitName();
+    saveHabit(habitName);
+    addHabitElement(habitName);
     addModalElement.remove();
   });
 

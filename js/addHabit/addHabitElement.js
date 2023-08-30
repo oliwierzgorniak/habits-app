@@ -1,10 +1,7 @@
-export default function addHabitElement() {
-  const nameInputElement = document.querySelector("#name-input");
-  const habitName = nameInputElement.value;
-
+export default function addHabitElement(name) {
   let habitElement = document.createElement("li");
   habitElement.classList.add("habit");
-  habitElement.innerText = habitName;
+  habitElement.innerText = name;
 
   let habitsContainerElement = document.querySelector("#habits-container");
   habitsContainerElement.append(habitElement);

@@ -1,4 +1,5 @@
 import createAndShowModal from "./js/addHabit/createAndShowModal.js";
+import addHabitsElmentsStart from "./js/addHabitsElmentsStart.js";
 
 // PWA
 if ("serviceWorker" in navigator) {
@@ -10,6 +11,8 @@ if ("serviceWorker" in navigator) {
     }
   });
 }
+
+addHabitsElmentsStart();
 
 const addButton = document.querySelector("#add-button");
 addButton.addEventListener("click", () => {
