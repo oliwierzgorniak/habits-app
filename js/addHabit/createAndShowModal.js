@@ -8,8 +8,10 @@ export default function createAndShowModal() {
   addModalElement.addEventListener("submit", (e) => {
     e.preventDefault();
     const habitName = getHabitName();
-    saveHabit(habitName);
-    addHabitElement(habitName);
+    const lastHabitId = localStorage.getItem("last-habit-id");
+    const habitId = lastHabitId ? +lastHabitId + 1 : 0;
+    saveHabit(habitId, habitName);
+    addHabitElement(habitId, habitName);
     addModalElement.remove();
   });
 

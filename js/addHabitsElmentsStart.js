@@ -1,7 +1,7 @@
 import addHabitElement from "./addHabit/addHabitElement.js";
 
 export default function addHabitsElmentsStart() {
-  const habitsJSON = localStorage.getItem("habits");
+  const habitsJSON = localStorage.getItem("habits-list");
   const habits = JSON.parse(habitsJSON) || [];
-  habits.forEach((name) => addHabitElement(name));
+  habits.forEach(({ id, name, streak }) => addHabitElement(id, name, streak));
 }
