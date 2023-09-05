@@ -5,6 +5,7 @@ export default function saveHabitAndGetId({ id, name, unit, goal, goalUnit }) {
     id: id,
     name: name,
     streak: 0,
+    lastStreakUpdate: null,
     completionLevel: 0,
     unit: unit,
     goal: goal,

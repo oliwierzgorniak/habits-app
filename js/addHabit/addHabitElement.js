@@ -1,5 +1,6 @@
-import getStreak from "./addHabitElement/getStreak.js";
+import getCompletionLevel from "./addHabitElement/getCompletionLevel.js";
 import updateHabitListProperty from "./addHabitElement/updateHabitListProperty.js";
+import updateStreak from "./addHabitElement/updateStreak.js";
 
 export default function addHabitElement({
   id,
@@ -18,6 +19,7 @@ export default function addHabitElement({
 
   let streakElement = document.createElement("span");
   streakElement.innerText = streak || "0";
+  streakElement.dataset.id = id;
   streakElement.classList.add("streak");
   habitElement.append(streakElement);
 
@@ -34,15 +36,17 @@ export default function addHabitElement({
   habitElement.append(completionLevelContainer);
 
   let doneButtonElement = document.createElement("button");
-  doneButtonElement.dataset.habitid = id;
+  doneButtonElement.dataset.id = id;
   doneButtonElement.innerText = "+";
   doneButtonElement.addEventListener("click", (e) => {
-    const habitId = e.target.dataset.habitid;
-    const newStreak = getStreak(habitId) + 1;
-    updateHabitListProperty(habitId, "streak", newStreak);
+    const habitId = e.target.dataset.id;
+    const newCompletionLevel = getCompletionLevel(habitId) + 1;
+    updateHabitListProperty(habitId, "completionLevel", newCompletionLevel);
     const habitListItemElement = e.target.parentNode;
-    let streakElement = habitListItemElement.querySelector(".streak");
-    streakElement.innerText = newStreak;
+    let completionLevelElement =
+      habitListItemElement.querySelector(".completion-level");
+    completionLevelElement.innerText = newCompletionLevel;
+    updateStreak(habitId);
   });
   habitElement.append(doneButtonElement);
 
