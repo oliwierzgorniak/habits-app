@@ -9,6 +9,7 @@ export default function addHabitElement({
   goal,
   unit,
   completionLevel,
+  goalUnit,
 }) {
   let habitElement = document.createElement("li");
   habitElement.classList.add("habit");
@@ -50,6 +51,9 @@ export default function addHabitElement({
   });
   habitElement.append(doneButtonElement);
 
-  let habitsContainerElement = document.querySelector("#habits-container");
+  const containerId = `#${
+    goalUnit === "day" ? "daily" : "weekly"
+  }-habits-container`;
+  let habitsContainerElement = document.querySelector(containerId);
   habitsContainerElement.append(habitElement);
 }
